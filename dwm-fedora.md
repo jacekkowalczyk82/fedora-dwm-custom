@@ -1,6 +1,11 @@
 
 # How to install and configure DWM at Fedora 29
 
+![Fedora 30 DWM screenshot](./screenshots/dwm-fedora-2018-11-20-152332_1920x975_scrot.png)
+
+This manual was moved here from [https://jacek_kowalczyk@bitbucket.org/jacek_kowalczyk/notatki-md.git](https://jacek_kowalczyk@bitbucket.org/jacek_kowalczyk/notatki-md.git)
+
+
 ```
 sudo dnf install dwm git dmenu st
 git clone git://git.suckless.org/dwm
@@ -112,19 +117,21 @@ cp /usr/share/spin-kickstarts/fedora-live-kde.ks /opt/notatki-md/fedora-dwm-spin
 * Building 
 
 ```
-cd /opt/notatki-md/fedora-dwm-spin
+cd /opt/fedora-dwm-custom/fedora-dwm-spin
 
 # remove old image file system files 
-sudo rm -rf /var/tmp/imgcreate-*
+sudo rm -rf ./tmp/imgcreate-*
 
+ISO_NAME="Fedora-XFCE-DWM-`date '+%Y-%m-%d-%H%M'`" 
 sudo livecd-creator --verbose \
 --config=fedora-live-xfce-dwm.ks \
---fslabel=Fedora-XFCE-DWM-livecd \
+--fslabel=${ISO_NAME} \
 --cache=./build-cache/ --tmpdir=./tmp/ | tee -a Fedora-XFCE-DWM-livecd-`date '+%Y-%m-%d-%H-%M-%S'`.log 
 
+ISO_NAME="Fedora-KDE-DWM-`date '+%Y-%m-%d-%H%M'`" 
 sudo livecd-creator --verbose \
 --config=fedora-live-kde-dwm.ks \
---fslabel=Fedora-KDE-DWM-livecd \
+--fslabel=${ISO_NAME} \
 --cache=./build-cache/ --tmpdir=./tmp/ | tee -a Fedora-KDE-DWM-livecd-`date '+%Y-%m-%d-%H-%M-%S'`.log 
 
 #Fedora-DWM-light-2019-06-13-1057
