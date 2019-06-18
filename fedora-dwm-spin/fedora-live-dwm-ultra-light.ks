@@ -1,4 +1,4 @@
-# fedora-livecd-xfce-dwm.ks
+# fedora-live-dwm-ultra-light.ks
 #
 # Description:
 # - Fedora Live Spin with the light-weight XFCE Desktop Environment
@@ -187,7 +187,7 @@ restorecon -R /home/liveuser
 EOF
 
 
-# end of POst install in chroot
+# end of Post install in chroot
 %end
 
 # additional post install not in chroot 
@@ -196,9 +196,9 @@ EOF
 # $LIVE_ROOT/
 echo INSTALL_ROOT=$INSTALL_ROOT
 echo LIVE_ROOT=$LIVE_ROOT
+ls -alh $LIVE_ROOT/
 
 mkdir -p $INSTALL_ROOT/etc/skel/.config/nitrogen/
-mkdir -p $LIVE_ROOT/etc/skel/.config/nitrogen/
 
 cp -rv myconfigs.chroot/etc/skel/.xinitrc $INSTALL_ROOT/etc/skel/
 pushd $INSTALL_ROOT/etc/skel/ 
@@ -207,30 +207,16 @@ chmod 755 .xinitrc
 chmod 755 .xsession
 popd
 
-cp -rv myconfigs.chroot/etc/skel/.xinitrc $LIVE_ROOT/etc/skel/
-pushd $LIVE_ROOT/etc/skel/ 
-ln -s .xinitrc .xsession 
-chmod 755 .xinitrc
-chmod 755 .xsession
-popd
-
 cp -rv myconfigs.chroot/etc/skel/.config/nitrogen/bg-saved.cfg $INSTALL_ROOT/etc/skel/.config/nitrogen/bg-saved.cfg
 cp -rv myconfigs.chroot/etc/skel/.config/nitrogen/nitrogen.cfg $INSTALL_ROOT/etc/skel/.config/nitrogen/nitrogen.cfg
 
-cp -rv myconfigs.chroot/etc/skel/.config/nitrogen/bg-saved.cfg $LIVE_ROOT/etc/skel/.config/nitrogen/bg-saved.cfg
-cp -rv myconfigs.chroot/etc/skel/.config/nitrogen/nitrogen.cfg $LIVE_ROOT/etc/skel/.config/nitrogen/nitrogen.cfg
-
-mkdir -p $LIVE_ROOT/opt/
 mkdir -p $INSTALL_ROOT/opt/
 
 cp -rv myconfigs.chroot/opt/dwm $INSTALL_ROOT/opt/
-cp -rv myconfigs.chroot/opt/dwm $LIVE_ROOT/opt/
 
 mkdir -p $INSTALL_ROOT/usr/share/xsessions/
-mkdir -p $LIVE_ROOT/usr/share/xsessions/
 
 cp -rv myconfigs.chroot/usr/share/xsessions/custom-dwm.desktop $INSTALL_ROOT/usr/share/xsessions/
-cp -rv myconfigs.chroot/usr/share/xsessions/custom-dwm.desktop $LIVE_ROOT/usr/share/xsessions/custom-dwm2.desktop
 
 %end 
 

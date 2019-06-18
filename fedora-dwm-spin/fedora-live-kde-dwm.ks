@@ -1,4 +1,4 @@
-# fedora-livecd-kde.ks
+# fedora-live-kde-dwm.ks
 #
 # Description:
 # - Fedora Live Spin with the K Desktop Environment (KDE), default 1.4 GB version
