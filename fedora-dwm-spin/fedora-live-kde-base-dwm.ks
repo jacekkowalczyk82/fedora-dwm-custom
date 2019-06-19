@@ -29,9 +29,11 @@ tmux
 geany 
 neofetch
 scrot
-terminator
 compton
 rxvt-unicode
+roxterm
+sakura
+
 kdevelop
 
 # packages end 
@@ -178,11 +180,10 @@ FOE
 chown -R liveuser:liveuser /home/liveuser/
 restorecon -R /home/liveuser/
 
-# end for all that should be doen for livecd 
+# end for all that should be done for livecd 
 EOF
 
-
-# end of POst install in chroot
+# end of Post install in chroot
 %end
 
 # additional post install not in chroot 

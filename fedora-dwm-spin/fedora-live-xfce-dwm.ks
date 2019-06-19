@@ -46,9 +46,10 @@ tmux
 geany 
 neofetch
 scrot
-terminator
 compton
 rxvt-unicode
+roxterm
+sakura
 
 %end
 
@@ -111,8 +112,8 @@ chmod +x /home/liveuser/Desktop/liveinst.desktop
 
 # Jacek Custom 
 
-systemctl enable multi-user.target 
-systemctl set-default multi-user.target 
+#systemctl enable multi-user.target 
+#systemctl set-default multi-user.target 
 
 
 mkdir -v /opt
@@ -178,7 +179,7 @@ chown -R liveuser:liveuser /home/liveuser
 restorecon -R /home/liveuser
 
 
-# end for all that should be doen for livecd 
+# end for all that should be done for livecd 
 EOF
 
 

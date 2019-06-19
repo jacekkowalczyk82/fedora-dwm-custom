@@ -106,9 +106,10 @@ Exec=/usr/libexec/xinit-compat
 ```
 sudo dnf install livecd-tools spin-kickstarts 
 ls -alh /usr/share/spin-kickstarts/
-cp /usr/share/spin-kickstarts/fedora-live-xfce.ks /opt/notatki-md/fedora-dwm-spin/fedora-live-xfce-dwm.ks
-cp /usr/share/spin-kickstarts/fedora-live-kde-base.ks /opt/notatki-md/fedora-dwm-spin/fedora-live-kde-base-dwm.ks
-cp /usr/share/spin-kickstarts/fedora-live-kde.ks /opt/notatki-md/fedora-dwm-spin/fedora-live-kde-dwm.ks
+cp /usr/share/spin-kickstarts/fedora-live-xfce.ks /opt/fedora-dwm-custom/fedora-dwm-spin/fedora-live-xfce-dwm.ks
+cp /usr/share/spin-kickstarts/fedora-live-kde-base.ks /opt/fedora-dwm-custom/fedora-dwm-spin/fedora-live-kde-base-dwm.ks
+cp /usr/share/spin-kickstarts/fedora-live-kde.ks /opt/fedora-dwm-custom/fedora-dwm-spin/fedora-live-kde-dwm.ks
+cp /usr/share/spin-kickstarts/fedora-live-lxqt.ks /opt/fedora-dwm-custom/fedora-dwm-spin/fedora-live-lxqt-dwm.ks
 
 #sudo dnf install system-config-kickstart # this does not work 
 

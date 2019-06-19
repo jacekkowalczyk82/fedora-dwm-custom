@@ -1,7 +1,7 @@
-# fedora-live-dwm-ultra-light.ks
+# fedora-live-lxqt-dwm.ks
 #
 # Description:
-# - Fedora Live Spin with the light-weight XFCE Desktop Environment
+# – Fedora Live Spin with the LXQt desktop environment and DWM
 #
 # Maintainer(s):
 # - Jacek Kowalczyk jack82@null.net 
@@ -9,19 +9,16 @@
 
 %include /usr/share/spin-kickstarts/fedora-live-base.ks
 %include /usr/share/spin-kickstarts/fedora-live-minimization.ks
-#%include /usr/share/spin-kickstarts/fedora-xfce-common.ks
+%include /usr/share/spin-kickstarts/fedora-lxqt-common.ks
+
 
 repo --name=fedora-modular --mirrorlist=https://mirrors.fedoraproject.org/mirrorlist?repo=fedora-modular-$releasever&arch=$basearch
 
 %packages
 
 fedora-repos-modular
-
-
-xorg-x11-xinit-session
 dwm
 #dwm-user
-
 git
 dmenu
 st
@@ -29,98 +26,63 @@ vim
 nano
 mc
 htop
-
 libX11-devel
 libXft-devel
 libXinerama-devel
-
 f30-backgrounds-base
-
 nitrogen
-feh
-
+xorg-x11-xinit-session
 livecd-tools
 spin-kickstarts 
 tmux
 geany 
 neofetch
 scrot
-xterm
+compton
 rxvt-unicode
 roxterm
 sakura
 
 
-@networkmanager-submodules
-thunar
-mousepad 
 
-# unlock default keyring. FIXME: Should probably be done in comps
-# gnome-keyring-pam
-# Admin tools are handy to have
-#@admin-tools
-
-# Add some screensavers, people seem to like them
-# Note that blank is still default.
-#xscreensaver-extras
-
-wget
-curl 
-# Better more popular browser
-#firefox
-midori
-system-config-printer
-
-# save some space
--autofs
--acpid
--gimp-help
--desktop-backgrounds-basic
--aspell-*                   # dictionaries are big
--xfce4-sensors-plugin
-
-#packages end
 %end
 
 
 %post
-
-#disable lightdm
-systemctl enable multi-user.target 
-systemctl set-default multi-user.target 
-
-# create /etc/sysconfig/desktop (needed for installation)
-
-cat > /etc/sysconfig/desktop <<EOF
-PREFERRED=/opt/dwm/dwm
-DISPLAYMANAGER=/usr/sbin/lightdm
-EOF
-
+# add initscript
 cat >> /etc/rc.d/init.d/livesys << EOF
 
-# disable screensaver locking (#674410)
-cat >> /home/liveuser/.xscreensaver << FOE
-mode:           off
-lock:           False
-dpmsEnabled:    False
+# set up autologin for user liveuser
+if [ -f /etc/sddm.conf ]; then
+sed -i 's/^#User=.*/User=liveuser/' /etc/sddm.conf
+sed -i 's/^#Session=.*/Session=lxqt.desktop/' /etc/sddm.conf
+else
+cat > /etc/sddm.conf << SDDM_EOF
+[Autologin]
+User=liveuser
+Session=lxqt.desktop
+SDDM_EOF
+fi
+
+# show liveinst.desktop on desktop and in menu
+sed -i 's/NoDisplay=true/NoDisplay=false/' /usr/share/applications/liveinst.desktop
+mkdir /home/liveuser/Desktop
+cp -a /usr/share/applications/liveinst.desktop /home/liveuser/Desktop/
+
+# set up preferred apps 
+cat > /etc/xdg/libfm/pref-apps.conf << FOE 
+[Preferred Applications]
+WebBrowser=qupzilla.desktop
 FOE
 
+# no updater applet in live environment
+rm -f /etc/xdg/autostart/org.mageia.dnfdragora-updater.desktop
 
-## set up lightdm autologin
-#sed -i 's/^#autologin-user=.*/autologin-user=liveuser/' /etc/lightdm/lightdm.conf
-#sed -i 's/^#autologin-user-timeout=.*/autologin-user-timeout=0/' /etc/lightdm/lightdm.conf
-##sed -i 's/^#show-language-selector=.*/show-language-selector=true/' /etc/lightdm/lightdm-gtk-greeter.conf
+# make sure to set the right permissions and selinux contexts
+chown -R liveuser:liveuser /home/liveuser/
+restorecon -R /home/liveuser/
 
-## set custom DWM as default session
-#sed -i 's/^#user-session=.*/user-session=custom-dwm/' /etc/lightdm/lightdm.conf
 
-# Show harddisk install on the desktop
-sed -i -e 's/NoDisplay=true/NoDisplay=false/' /usr/share/applications/liveinst.desktop
-mkdir /home/liveuser/Desktop
-cp /usr/share/applications/liveinst.desktop /home/liveuser/Desktop
-
-## no updater applet in live environment
-#rm -f /etc/xdg/autostart/org.mageia.dnfdragora-updater.desktop
 
 # Jacek Custom 
 mkdir -v /opt
@@ -222,4 +184,6 @@ mkdir -p $INSTALL_ROOT/usr/share/xsessions/
 cp -rv myconfigs.chroot/usr/share/xsessions/custom-dwm.desktop $INSTALL_ROOT/usr/share/xsessions/
 
 %end 
+
+
 
