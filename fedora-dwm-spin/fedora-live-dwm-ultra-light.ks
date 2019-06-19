@@ -161,7 +161,7 @@ FOE
 
 cat >> /home/livecd/.config/nitrogen/bg-saved.cfg  << FOE
 [xin_-1]
-file=/usr/share/backgrounds/fedora-workstation/himalayan-desert-mountains.jpg
+file=/usr/share/backgrounds/f30/default/wide/f30.png
 mode=0
 bgcolor=#000000
 FOE
