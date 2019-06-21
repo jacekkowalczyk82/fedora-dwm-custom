@@ -127,13 +127,13 @@ ISO_NAME="Fedora-XFCE-DWM-`date '+%Y-%m-%d-%H%M'`"
 sudo livecd-creator --verbose \
 --config=fedora-live-xfce-dwm.ks \
 --fslabel=${ISO_NAME} \
---cache=./build-cache/ --tmpdir=./tmp/ | tee -a Fedora-XFCE-DWM-livecd-`date '+%Y-%m-%d-%H-%M-%S'`.log 
+--cache=./build-cache/ --tmpdir=./tmp/ 2>&1 | tee -a ${ISO_NAME}.log 
 
 ISO_NAME="Fedora-KDE-DWM-`date '+%Y-%m-%d-%H%M'`" 
 sudo livecd-creator --verbose \
 --config=fedora-live-kde-dwm.ks \
 --fslabel=${ISO_NAME} \
---cache=./build-cache/ --tmpdir=./tmp/ | tee -a Fedora-KDE-DWM-livecd-`date '+%Y-%m-%d-%H-%M-%S'`.log 
+--cache=./build-cache/ --tmpdir=./tmp/ 2>&1 | tee -a ${ISO_NAME}.log 
 
 #Fedora-DWM-light-2019-06-13-1057
 
@@ -141,13 +141,13 @@ ISO_NAME="Fedora-DWM-light-`date '+%Y-%m-%d-%H%M'`"
 sudo livecd-creator --verbose \
 --config=fedora-live-dwm-ultra-light.ks \
 --fslabel=${ISO_NAME} \
---cache=./build-cache/ --tmpdir=./tmp/ | tee -a ${ISO_NAME}.log 
+--cache=./build-cache/ --tmpdir=./tmp/ 2>&1 | tee -a ${ISO_NAME}.log 
 
 ISO_NAME="Fedora-LXQT-DWM-`date '+%Y-%m-%d-%H%M'`" 
 sudo livecd-creator --verbose \
 --config=fedora-live-lxqt-dwm.ks \
 --fslabel=${ISO_NAME} \
---cache=./build-cache/ --tmpdir=./tmp/ | tee -a Fedora-LXQT-DWM-livecd-`date '+%Y-%m-%d-%H-%M-%S'`.log 
+--cache=./build-cache/ --tmpdir=./tmp/ 2>&1 | tee -a ${ISO_NAME}.log 
 
 
 

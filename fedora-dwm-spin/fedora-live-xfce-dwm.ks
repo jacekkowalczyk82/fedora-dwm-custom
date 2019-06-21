@@ -19,7 +19,15 @@ repo --name=fedora-modular --mirrorlist=https://mirrors.fedoraproject.org/mirror
 #baseurl=http://download.fedoraproject.org/pub/fedora/linux/releases/$releasever/Modular/$basearch/os/
 #metalink=https://mirrors.fedoraproject.org/metalink?repo=fedora-modular-$releasever&arch=$basearch
 
+#needs bigger disk 
+part / --size 6144 --fstype ext4
+
 %packages
+#to fix the conflict
+-xfce4-session-engines
+
+#to fix missing mirror for it
+-openssh-askpass
 
 fedora-repos-modular
 
