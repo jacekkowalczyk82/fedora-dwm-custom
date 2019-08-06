@@ -123,17 +123,23 @@ cd /opt/fedora-dwm-custom/fedora-dwm-spin
 # remove old image file system files 
 sudo rm -rf ./tmp/imgcreate-*
 
-ISO_NAME="Fedora-XFCE-DWM-`date '+%Y-%m-%d-%H%M'`" 
+ISO_NAME="Fedora-DWM-XFCE-`date '+%Y-%m-%d-%H%M'`" 
 sudo livecd-creator --verbose \
 --config=fedora-live-xfce-dwm.ks \
 --fslabel=${ISO_NAME} \
 --cache=./build-cache/ --tmpdir=./tmp/ 2>&1 | tee -a ${ISO_NAME}.log 
 
-ISO_NAME="Fedora-KDE-DWM-`date '+%Y-%m-%d-%H%M'`" 
+sha256sum {ISO_NAME}.iso |tee -a {ISO_NAME}.iso.sha256sum.txt
+
+
+ISO_NAME="Fedora-DWM-KDE-`date '+%Y-%m-%d-%H%M'`" 
 sudo livecd-creator --verbose \
 --config=fedora-live-kde-dwm.ks \
 --fslabel=${ISO_NAME} \
 --cache=./build-cache/ --tmpdir=./tmp/ 2>&1 | tee -a ${ISO_NAME}.log 
+
+sha256sum {ISO_NAME}.iso |tee -a {ISO_NAME}.iso.sha256sum.txt
+
 
 #Fedora-DWM-light-2019-06-13-1057
 
@@ -143,12 +149,15 @@ sudo livecd-creator --verbose \
 --fslabel=${ISO_NAME} \
 --cache=./build-cache/ --tmpdir=./tmp/ 2>&1 | tee -a ${ISO_NAME}.log 
 
-ISO_NAME="Fedora-LXQT-DWM-`date '+%Y-%m-%d-%H%M'`" 
+sha256sum {ISO_NAME}.iso |tee -a {ISO_NAME}.iso.sha256sum.txt
+
+
+ISO_NAME="Fedora-DWM-LXQT-`date '+%Y-%m-%d-%H%M'`" 
 sudo livecd-creator --verbose \
 --config=fedora-live-lxqt-dwm.ks \
 --fslabel=${ISO_NAME} \
 --cache=./build-cache/ --tmpdir=./tmp/ 2>&1 | tee -a ${ISO_NAME}.log 
 
-
+sha256sum {ISO_NAME}.iso |tee -a {ISO_NAME}.iso.sha256sum.txt
 
 ```

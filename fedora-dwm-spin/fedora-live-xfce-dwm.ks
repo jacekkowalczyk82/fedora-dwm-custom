@@ -58,6 +58,7 @@ compton
 rxvt-unicode
 roxterm
 sakura
+terminator
 
 %end
 
