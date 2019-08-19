@@ -1,30 +1,21 @@
-# fedora-live-xfce-dwm.ks
-#
-# Description:
-# - Fedora Live Spin with the light-weight XFCE Desktop Environment
+# Desktop with customizations to fit in a CD (package removals, etc.)
+# Maintained by the Fedora Desktop SIG:
+# http://fedoraproject.org/wiki/SIGs/Desktop
+# mailto:desktop@lists.fedoraproject.org
+
 #
 # Maintainer(s):
 # - Jacek Kowalczyk jack82@null.net 
 
-
 %include /usr/share/spin-kickstarts/fedora-live-base.ks
+%include /usr/share/spin-kickstarts/fedora-mate-common.ks
 %include /usr/share/spin-kickstarts/fedora-live-minimization.ks
-%include /usr/share/spin-kickstarts/fedora-xfce-common.ks
-
-#%include /usr/share/spin-kickstarts/fedora-repo-rawhide.ks
-#%include /usr/share/spin-kickstarts/fedora-repo-not-rawhide.ks
 
 repo --name=fedora-modular --mirrorlist=https://mirrors.fedoraproject.org/mirrorlist?repo=fedora-modular-$releasever&arch=$basearch
 
-#baseurl=http://download.fedoraproject.org/pub/fedora/linux/releases/$releasever/Modular/$basearch/os/
-#metalink=https://mirrors.fedoraproject.org/metalink?repo=fedora-modular-$releasever&arch=$basearch
-
-#needs bigger disk 
-part / --size 6144 --fstype ext4
+part / --size 7168
 
 %packages
-#to fix the conflict
--xfce4-session-engines
 
 #to fix missing mirror for it
 -openssh-askpass
@@ -64,60 +55,41 @@ terminator
 
 
 %post
-# xfce configuration
-
-# create /etc/sysconfig/desktop (needed for installation)
-
-cat > /etc/sysconfig/desktop <<EOF
-PREFERRED=/usr/bin/startxfce4
-DISPLAYMANAGER=/usr/sbin/lightdm
-EOF
-
 cat >> /etc/rc.d/init.d/livesys << EOF
 
-mkdir -p /home/liveuser/.config/xfce4
 
-cat > /home/liveuser/.config/xfce4/helpers.rc << FOE
-MailReader=sylpheed-claws
-FileManager=Thunar
-WebBrowser=firefox
-FOE
+# make the installer show up
+if [ -f /usr/share/applications/liveinst.desktop ]; then
+  # Show harddisk install in shell dash
+  sed -i -e 's/NoDisplay=true/NoDisplay=false/' /usr/share/applications/liveinst.desktop ""
+fi
+mkdir /home/liveuser/Desktop
+cp /usr/share/applications/liveinst.desktop /home/liveuser/Desktop
 
-# disable screensaver locking (#674410)
-cat >> /home/liveuser/.xscreensaver << FOE
-mode:           off
-lock:           False
-dpmsEnabled:    False
-FOE
+# and mark it as executable
+chmod +x /home/liveuser/Desktop/liveinst.desktop
 
-# deactivate xfconf-migration (#683161)
-rm -f /etc/xdg/autostart/xfconf-migration-4.6.desktop || :
-
-# deactivate xfce4-panel first-run dialog (#693569)
-mkdir -p /home/liveuser/.config/xfce4/xfconf/xfce-perchannel-xml
-cp /etc/xdg/xfce4/panel/default.xml /home/liveuser/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml
+# rebuild schema cache with any overrides we installed
+glib-compile-schemas /usr/share/glib-2.0/schemas
 
 # set up lightdm autologin
 sed -i 's/^#autologin-user=.*/autologin-user=liveuser/' /etc/lightdm/lightdm.conf
 sed -i 's/^#autologin-user-timeout=.*/autologin-user-timeout=0/' /etc/lightdm/lightdm.conf
 #sed -i 's/^#show-language-selector=.*/show-language-selector=true/' /etc/lightdm/lightdm-gtk-greeter.conf
 
-# set Xfce as default session, otherwise login will fail
-#sed -i 's/^#user-session=.*/user-session=xfce/' /etc/lightdm/lightdm.conf
+# set MATE as default session, otherwise login will fail
+#sed -i 's/^#user-session=.*/user-session=mate/' /etc/lightdm/lightdm.conf
 
 # set custom DWM as default session
 sed -i 's/^#user-session=.*/user-session=custom-dwm/' /etc/lightdm/lightdm.conf
 
-# Show harddisk install on the desktop
-sed -i -e 's/NoDisplay=true/NoDisplay=false/' /usr/share/applications/liveinst.desktop
-mkdir /home/liveuser/Desktop
-cp /usr/share/applications/liveinst.desktop /home/liveuser/Desktop
+# Turn off PackageKit-command-not-found while uninstalled
+if [ -f /etc/PackageKit/CommandNotFound.conf ]; then
+  sed -i -e 's/^SoftwareSourceSearch=true/SoftwareSourceSearch=false/' /etc/PackageKit/CommandNotFound.conf
+fi
 
 # no updater applet in live environment
 rm -f /etc/xdg/autostart/org.mageia.dnfdragora-updater.desktop
-
-# and mark it as executable (new Xfce security feature)
-chmod +x /home/liveuser/Desktop/liveinst.desktop
 
 # Jacek Custom 
 

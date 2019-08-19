@@ -107,6 +107,7 @@ Exec=/usr/libexec/xinit-compat
 sudo dnf install livecd-tools spin-kickstarts 
 ls -alh /usr/share/spin-kickstarts/
 cp /usr/share/spin-kickstarts/fedora-live-xfce.ks /opt/fedora-dwm-custom/fedora-dwm-spin/fedora-live-xfce-dwm.ks
+cp /usr/share/spin-kickstarts/fedora-live-mate_compiz.ks /opt/fedora-dwm-custom/fedora-dwm-spin/fedora-live-mate-dwm.ks
 cp /usr/share/spin-kickstarts/fedora-live-kde-base.ks /opt/fedora-dwm-custom/fedora-dwm-spin/fedora-live-kde-base-dwm.ks
 cp /usr/share/spin-kickstarts/fedora-live-kde.ks /opt/fedora-dwm-custom/fedora-dwm-spin/fedora-live-kde-dwm.ks
 cp /usr/share/spin-kickstarts/fedora-live-lxqt.ks /opt/fedora-dwm-custom/fedora-dwm-spin/fedora-live-lxqt-dwm.ks
@@ -126,6 +127,14 @@ sudo rm -rf ./tmp/imgcreate-*
 ISO_NAME="Fedora-DWM-XFCE-`date '+%Y-%m-%d-%H%M'`" 
 sudo livecd-creator --verbose \
 --config=fedora-live-xfce-dwm.ks \
+--fslabel=${ISO_NAME} \
+--cache=./build-cache/ --tmpdir=./tmp/ 2>&1 | tee -a ${ISO_NAME}.log 
+
+sha256sum {ISO_NAME}.iso |tee -a {ISO_NAME}.iso.sha256sum.txt
+
+ISO_NAME="Fedora-DWM-MATE-`date '+%Y-%m-%d-%H%M'`" 
+sudo livecd-creator --verbose \
+--config=fedora-live-mate-dwm.ks \
 --fslabel=${ISO_NAME} \
 --cache=./build-cache/ --tmpdir=./tmp/ 2>&1 | tee -a ${ISO_NAME}.log 
 
