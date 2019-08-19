@@ -13,7 +13,7 @@
 
 repo --name=fedora-modular --mirrorlist=https://mirrors.fedoraproject.org/mirrorlist?repo=fedora-modular-$releasever&arch=$basearch
 
-part / --size 7168
+part / --size 8192
 
 %packages
 
