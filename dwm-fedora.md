@@ -130,7 +130,7 @@ sudo livecd-creator --verbose \
 --fslabel=${ISO_NAME} \
 --cache=./build-cache/ --tmpdir=./tmp/ 2>&1 | tee -a ${ISO_NAME}.log 
 
-sha256sum {ISO_NAME}.iso |tee -a {ISO_NAME}.iso.sha256sum.txt
+sha256sum ${ISO_NAME}.iso |tee -a ${ISO_NAME}.iso.sha256sum.txt
 
 ISO_NAME="Fedora-DWM-MATE-`date '+%Y-%m-%d-%H%M'`" 
 sudo livecd-creator --verbose \
@@ -138,7 +138,7 @@ sudo livecd-creator --verbose \
 --fslabel=${ISO_NAME} \
 --cache=./build-cache/ --tmpdir=./tmp/ 2>&1 | tee -a ${ISO_NAME}.log 
 
-sha256sum {ISO_NAME}.iso |tee -a {ISO_NAME}.iso.sha256sum.txt
+sha256sum ${ISO_NAME}.iso |tee -a ${ISO_NAME}.iso.sha256sum.txt
 
 
 ISO_NAME="Fedora-DWM-KDE-`date '+%Y-%m-%d-%H%M'`" 
@@ -147,7 +147,7 @@ sudo livecd-creator --verbose \
 --fslabel=${ISO_NAME} \
 --cache=./build-cache/ --tmpdir=./tmp/ 2>&1 | tee -a ${ISO_NAME}.log 
 
-sha256sum {ISO_NAME}.iso |tee -a {ISO_NAME}.iso.sha256sum.txt
+sha256sum ${ISO_NAME}.iso |tee -a ${ISO_NAME}.iso.sha256sum.txt
 
 
 #Fedora-DWM-light-2019-06-13-1057
@@ -158,7 +158,7 @@ sudo livecd-creator --verbose \
 --fslabel=${ISO_NAME} \
 --cache=./build-cache/ --tmpdir=./tmp/ 2>&1 | tee -a ${ISO_NAME}.log 
 
-sha256sum {ISO_NAME}.iso |tee -a {ISO_NAME}.iso.sha256sum.txt
+sha256sum ${ISO_NAME}.iso |tee -a ${ISO_NAME}.iso.sha256sum.txt
 
 
 ISO_NAME="Fedora-DWM-LXQT-`date '+%Y-%m-%d-%H%M'`" 
@@ -167,6 +167,6 @@ sudo livecd-creator --verbose \
 --fslabel=${ISO_NAME} \
 --cache=./build-cache/ --tmpdir=./tmp/ 2>&1 | tee -a ${ISO_NAME}.log 
 
-sha256sum {ISO_NAME}.iso |tee -a {ISO_NAME}.iso.sha256sum.txt
+sha256sum ${ISO_NAME}.iso |tee -a ${ISO_NAME}.iso.sha256sum.txt
 
 ```
