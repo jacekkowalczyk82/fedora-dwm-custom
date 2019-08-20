@@ -17,10 +17,13 @@ vim
 nano
 mc
 htop
+
 libX11-devel
 libXft-devel
 libXinerama-devel
+
 f30-backgrounds-base
+
 nitrogen
 xorg-x11-xinit-session
 livecd-tools
@@ -30,10 +33,27 @@ geany
 neofetch
 scrot
 compton
+xterm
 rxvt-unicode
 roxterm
 sakura
+terminator
 
+# resue tools for passwords and disks
+ntfs-3g
+mtools
+gparted
+e2fsprogs
+chntpw
+
+wget
+curl 
+# Better more popular browser
+firefox
+midori
+system-config-printer
+
+#KDE power
 kdevelop
 
 # packages end 
@@ -173,12 +193,11 @@ icon_caps=true
 dirs=/usr/share/backgrounds;
 FOE
 
-
-
-
+# this goes at the end after all other changes. 
 # make sure to set the right permissions and selinux contexts
-chown -R liveuser:liveuser /home/liveuser/
-restorecon -R /home/liveuser/
+chown -R liveuser:liveuser /home/liveuser
+restorecon -R /home/liveuser
+
 
 # end for all that should be done for livecd 
 EOF
@@ -215,5 +234,4 @@ mkdir -p $INSTALL_ROOT/usr/share/xsessions/
 cp -rv myconfigs.chroot/usr/share/xsessions/custom-dwm.desktop $INSTALL_ROOT/usr/share/xsessions/
 
 %end 
-
 

@@ -17,8 +17,10 @@ repo --name=fedora-modular --mirrorlist=https://mirrors.fedoraproject.org/mirror
 %packages
 
 fedora-repos-modular
+
 dwm
 #dwm-user
+
 git
 dmenu
 st
@@ -26,10 +28,13 @@ vim
 nano
 mc
 htop
+
 libX11-devel
 libXft-devel
 libXinerama-devel
+
 f30-backgrounds-base
+
 nitrogen
 xorg-x11-xinit-session
 livecd-tools
@@ -39,12 +44,27 @@ geany
 neofetch
 scrot
 compton
+xterm
 rxvt-unicode
 roxterm
 sakura
+terminator
 
+# resue tools for passwords and disks
+ntfs-3g
+mtools
+gparted
+e2fsprogs
+chntpw
 
+wget
+curl 
+# Better more popular browser
+firefox
+midori
+system-config-printer
 
+# packages end 
 %end
 
 
@@ -85,6 +105,7 @@ restorecon -R /home/liveuser/
 
 
 # Jacek Custom 
+
 mkdir -v /opt
 
 cat >> /home/liveuser/.xinitrc << FOE
@@ -144,6 +165,7 @@ dirs=/usr/share/backgrounds;
 FOE
 
 # this goes at the end after all other changes. 
+# make sure to set the right permissions and selinux contexts
 chown -R liveuser:liveuser /home/liveuser
 restorecon -R /home/liveuser
 
@@ -153,7 +175,6 @@ EOF
 
 # end of Post install in chroot
 %end
-
 
 # additional post install not in chroot 
 %post --nochroot 
@@ -184,6 +205,4 @@ mkdir -p $INSTALL_ROOT/usr/share/xsessions/
 cp -rv myconfigs.chroot/usr/share/xsessions/custom-dwm.desktop $INSTALL_ROOT/usr/share/xsessions/
 
 %end 
-
-
 

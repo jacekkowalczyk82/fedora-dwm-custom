@@ -45,7 +45,9 @@ htop
 libX11-devel
 libXft-devel
 libXinerama-devel
+
 f30-backgrounds-base
+
 nitrogen
 xorg-x11-xinit-session
 livecd-tools
@@ -55,15 +57,38 @@ geany
 neofetch
 scrot
 compton
+xterm
 rxvt-unicode
 roxterm
 sakura
 terminator
 
+# resue tools for passwords and disks
+ntfs-3g
+mtools
+gparted
+e2fsprogs
+chntpw
+
+wget
+curl 
+# Better more popular browser
+firefox
+midori
+system-config-printer
+
+# packages end 
 %end
 
 
 %post
+
+# Jacek Custom 
+
+#disable lightdm
+#systemctl enable multi-user.target 
+#systemctl set-default multi-user.target 
+
 # xfce configuration
 
 # create /etc/sysconfig/desktop (needed for installation)
@@ -120,10 +145,6 @@ rm -f /etc/xdg/autostart/org.mageia.dnfdragora-updater.desktop
 chmod +x /home/liveuser/Desktop/liveinst.desktop
 
 # Jacek Custom 
-
-#systemctl enable multi-user.target 
-#systemctl set-default multi-user.target 
-
 
 mkdir -v /opt
 
@@ -191,7 +212,6 @@ restorecon -R /home/liveuser
 
 # end for all that should be done for livecd 
 EOF
-
 
 # end of Post install in chroot
 %end

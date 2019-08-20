@@ -17,8 +17,6 @@ repo --name=fedora-modular --mirrorlist=https://mirrors.fedoraproject.org/mirror
 
 fedora-repos-modular
 
-
-xorg-x11-xinit-session
 dwm
 #dwm-user
 
@@ -38,18 +36,28 @@ f30-backgrounds-base
 
 nitrogen
 feh
+xorg-x11-xinit-session
 
 livecd-tools
 spin-kickstarts 
+
 tmux
 geany 
 neofetch
 scrot
+compton
 xterm
 rxvt-unicode
 roxterm
 sakura
+terminator
 
+# resue tools for passwords and disks
+ntfs-3g
+mtools
+gparted
+e2fsprogs
+chntpw
 
 @networkmanager-submodules
 thunar
@@ -67,7 +75,7 @@ mousepad
 wget
 curl 
 # Better more popular browser
-#firefox
+firefox
 midori
 system-config-printer
 
@@ -123,6 +131,7 @@ cp /usr/share/applications/liveinst.desktop /home/liveuser/Desktop
 #rm -f /etc/xdg/autostart/org.mageia.dnfdragora-updater.desktop
 
 # Jacek Custom 
+
 mkdir -v /opt
 
 cat >> /home/liveuser/.xinitrc << FOE
@@ -182,6 +191,7 @@ dirs=/usr/share/backgrounds;
 FOE
 
 # this goes at the end after all other changes. 
+# make sure to set the right permissions and selinux contexts
 chown -R liveuser:liveuser /home/liveuser
 restorecon -R /home/liveuser
 
@@ -191,7 +201,6 @@ EOF
 
 # end of Post install in chroot
 %end
-
 
 # additional post install not in chroot 
 %post --nochroot 
