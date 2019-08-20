@@ -50,8 +50,10 @@ f30-backgrounds-base
 
 nitrogen
 xorg-x11-xinit-session
+
 livecd-tools
 spin-kickstarts 
+
 tmux
 geany 
 neofetch

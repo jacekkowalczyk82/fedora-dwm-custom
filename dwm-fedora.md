@@ -150,8 +150,6 @@ sudo livecd-creator --verbose \
 sha256sum ${ISO_NAME}.iso |tee -a ${ISO_NAME}.iso.sha256sum.txt
 
 
-#Fedora-DWM-light-2019-06-13-1057
-
 ISO_NAME="Fedora-DWM-light-`date '+%Y-%m-%d-%H%M'`" 
 sudo livecd-creator --verbose \
 --config=fedora-live-dwm-ultra-light.ks \
