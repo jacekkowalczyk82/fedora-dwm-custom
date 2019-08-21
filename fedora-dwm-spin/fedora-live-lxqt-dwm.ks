@@ -14,6 +14,9 @@
 
 repo --name=fedora-modular --mirrorlist=https://mirrors.fedoraproject.org/mirrorlist?repo=fedora-modular-$releasever&arch=$basearch
 
+#needs bigger disk 
+part / --size 6144 --fstype ext4
+
 %packages
 
 fedora-repos-modular
