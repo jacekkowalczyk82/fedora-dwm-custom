@@ -106,11 +106,11 @@ Exec=/usr/libexec/xinit-compat
 ```
 sudo dnf install livecd-tools spin-kickstarts 
 ls -alh /usr/share/spin-kickstarts/
-cp /usr/share/spin-kickstarts/fedora-live-xfce.ks /opt/fedora-dwm-custom/fedora-dwm-spin/fedora-live-xfce-dwm.ks
-cp /usr/share/spin-kickstarts/fedora-live-mate_compiz.ks /opt/fedora-dwm-custom/fedora-dwm-spin/fedora-live-mate-dwm.ks
-cp /usr/share/spin-kickstarts/fedora-live-kde-base.ks /opt/fedora-dwm-custom/fedora-dwm-spin/fedora-live-kde-base-dwm.ks
-cp /usr/share/spin-kickstarts/fedora-live-kde.ks /opt/fedora-dwm-custom/fedora-dwm-spin/fedora-live-kde-dwm.ks
-cp /usr/share/spin-kickstarts/fedora-live-lxqt.ks /opt/fedora-dwm-custom/fedora-dwm-spin/fedora-live-lxqt-dwm.ks
+cp /usr/share/spin-kickstarts/fedora-live-xfce.ks /priv-data/data/fedora-dwm-custom/fedora-dwm-spin/fedora-live-xfce-dwm.ks
+cp /usr/share/spin-kickstarts/fedora-live-mate_compiz.ks /priv-data/data/fedora-dwm-custom/edora-dwm-spin/fedora-live-mate-dwm.ks
+cp /usr/share/spin-kickstarts/fedora-live-kde-base.ks /priv-data/data/fedora-dwm-custom/fedora-dwm-spin/fedora-live-kde-base-dwm.ks
+cp /usr/share/spin-kickstarts/fedora-live-kde.ks /priv-data/data/fedora-dwm-custom/fedora-dwm-spin/fedora-live-kde-dwm.ks
+cp /usr/share/spin-kickstarts/fedora-live-lxqt.ks /priv-data/data/fedora-dwm-custom/fedora-dwm-spin/fedora-live-lxqt-dwm.ks
 
 #sudo dnf install system-config-kickstart # this does not work 
 
@@ -119,7 +119,7 @@ cp /usr/share/spin-kickstarts/fedora-live-lxqt.ks /opt/fedora-dwm-custom/fedora-
 * Building 
 
 ```
-cd /opt/fedora-dwm-custom/fedora-dwm-spin
+cd /priv-data/data/fedora-dwm-custom/fedora-dwm-spin
 
 # remove old image file system files 
 sudo rm -rf ./tmp/imgcreate-*
