@@ -1,0 +1,5 @@
+#private data partition 
+#/dev/sdb1: UUID="6ede4751-c600-4b7b-ae45-36027fd51ce7" TYPE="ext2" PARTUUID="0559a7b9-01"
+#UUID=6ede4751-c600-4b7b-ae45-36027fd51ce7 /priv-data            ext4    defaults  0 0
+UUID=985ba4b3-e2ea-4f44-b7a6-23e1bd3da66a  /priv-data            ext4    defaults  0 0
+
