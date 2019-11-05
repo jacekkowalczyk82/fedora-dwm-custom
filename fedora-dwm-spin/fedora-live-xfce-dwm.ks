@@ -26,8 +26,8 @@ part / --size 6144 --fstype ext4
 #to fix the conflict
 -xfce4-session-engines
 
-#to fix missing mirror for it
--openssh-askpass
+##to fix missing mirror for it
+#-openssh-askpass
 
 fedora-repos-modular
 
@@ -46,7 +46,7 @@ libX11-devel
 libXft-devel
 libXinerama-devel
 
-f30-backgrounds-base
+f31-backgrounds-base
 
 nitrogen
 xorg-x11-xinit-session
@@ -186,7 +186,7 @@ FOE
 
 cat >> /home/livecd/.config/nitrogen/bg-saved.cfg  << FOE
 [xin_-1]
-file=/usr/share/backgrounds/f30/default/wide/f30.png
+file=/usr/share/backgrounds/f31/default/wide/f31.png
 mode=0
 bgcolor=#000000
 FOE

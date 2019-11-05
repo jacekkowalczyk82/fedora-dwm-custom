@@ -11,12 +11,8 @@ sudo dnf install dwm git dmenu st
 git clone git://git.suckless.org/dwm
 cd dwm 
 
-sudo dnf install libX11-devel
-sudo dnf install libXft-devel
-sudo dnf install libXinerama-devel
+sudo dnf install libX11-devel libXft-devel libXinerama-devel nitrogen xorg-x11-xinit-session make 
 
-sudo dnf install nitrogen
-sudo dnf install xorg-x11-xinit-session
 
 ```
 
@@ -78,9 +74,28 @@ index 1c0b587..0bf6c2a 100644
 
 ```
 exec nitrogen --restore &
-while true ; do xsetroot -name "`date '+%Y-%m-%d %H:%M.%S'` Load15: `cat /proc/loadavg |cut -d " " -f 3`; `uptime -p `"; sleep 1 ; done &
-exec /home/kowalczy/git/dwm/dwm
+#exec compton -b &
 
+dropbox_status_string=""
+while true ; do 
+    #dropbox_status=$(dropbox-status.sh | head -n 1)
+    #if [ "$dropbox_status" == "Up to date" ]; then 
+    #    dropbox_status_string="Dropbox: "$(echo $dropbox_status)
+    #elif [ "$dropbox_status" == "Dropbox isn't running!" ]; then 
+    #    dropbox_status_string="$dropbox_status"
+    #else 
+    #    dropbox_status_string="Dropbox: "$(echo $dropbox_status|awk -F " " '{print $1}')
+    #fi 
+
+    load=$(cat /proc/loadavg |cut -d " " -f 3 )
+    uptime=$(uptime -p)
+    load_uptime="Load15: ${load} ; ${uptime}"
+
+    xsetroot -name "`date '+%Y-%m-%d %H:%M.%S' ` $load_uptime ; $dropbox_status_string "; sleep 1; 
+done &
+#exec mv ~/.dropbox-dist/dropbox.log ~/.dropbox-dist/dropbox.log.old  & 
+#exec ~/.dropbox-dist/dropboxd >> ~/.dropbox-dist/dropbox.log 2>&1  & 
+exec /opt/dwm/dwm
 
 ```
 
@@ -93,7 +108,7 @@ exec /home/kowalczy/git/dwm/dwm
 
 ```
 [Desktop Entry]
-Name=Kowalczy-DWM
+Name=Custom-DWM
 Exec=/usr/libexec/xinit-compat
 ```
 
@@ -124,7 +139,7 @@ cd /priv-data/data/fedora-dwm-custom/fedora-dwm-spin
 # remove old image file system files 
 sudo rm -rf ./tmp/imgcreate-*
 
-ISO_NAME="Fedora-DWM-XFCE-`date '+%Y-%m-%d-%H%M'`" 
+ISO_NAME="Fedora-31-DWM-XFCE-`date '+%Y-%m-%d'`" 
 sudo livecd-creator --verbose \
 --config=fedora-live-xfce-dwm.ks \
 --fslabel=${ISO_NAME} \
@@ -132,7 +147,7 @@ sudo livecd-creator --verbose \
 
 sha256sum ${ISO_NAME}.iso |tee -a ${ISO_NAME}.iso.sha256sum.txt
 
-ISO_NAME="Fedora-DWM-MATE-`date '+%Y-%m-%d-%H%M'`" 
+ISO_NAME="Fedora-31-DWM-MATE-`date '+%Y-%m-%d'`" 
 sudo livecd-creator --verbose \
 --config=fedora-live-mate-dwm.ks \
 --fslabel=${ISO_NAME} \
@@ -141,7 +156,7 @@ sudo livecd-creator --verbose \
 sha256sum ${ISO_NAME}.iso |tee -a ${ISO_NAME}.iso.sha256sum.txt
 
 
-ISO_NAME="Fedora-DWM-KDE-`date '+%Y-%m-%d-%H%M'`" 
+ISO_NAME="Fedora-31-DWM-KDE-`date '+%Y-%m-%d'`" 
 sudo livecd-creator --verbose \
 --config=fedora-live-kde-dwm.ks \
 --fslabel=${ISO_NAME} \
@@ -150,7 +165,7 @@ sudo livecd-creator --verbose \
 sha256sum ${ISO_NAME}.iso |tee -a ${ISO_NAME}.iso.sha256sum.txt
 
 
-ISO_NAME="Fedora-DWM-light-`date '+%Y-%m-%d-%H%M'`" 
+ISO_NAME="Fedora-31-DWM-light-`date '+%Y-%m-%d'`" 
 sudo livecd-creator --verbose \
 --config=fedora-live-dwm-ultra-light.ks \
 --fslabel=${ISO_NAME} \
@@ -159,7 +174,7 @@ sudo livecd-creator --verbose \
 sha256sum ${ISO_NAME}.iso |tee -a ${ISO_NAME}.iso.sha256sum.txt
 
 
-ISO_NAME="Fedora-DWM-LXQT-`date '+%Y-%m-%d-%H%M'`" 
+ISO_NAME="Fedora-31-DWM-LXQT-`date '+%Y-%m-%d'`" 
 sudo livecd-creator --verbose \
 --config=fedora-live-lxqt-dwm.ks \
 --fslabel=${ISO_NAME} \
