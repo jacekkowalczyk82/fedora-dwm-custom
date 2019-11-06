@@ -4,12 +4,20 @@
 %include /usr/share/spin-kickstarts/fedora-live-base.ks
 %include /usr/share/spin-kickstarts/fedora-kde-common.ks
 
-repo --name=fedora --mirrorlist=https://mirrors.fedoraproject.org/metalink?repo=fedora-$releasever&arch=$basearch
-repo --name=updates --mirrorlist=https://mirrors.fedoraproject.org/metalink?repo=updates-released-f$releasever&arch=$basearch
+#repo --name=fedora --mirrorlist=https://mirrors.fedoraproject.org/metalink?repo=fedora-$releasever&arch=$basearch
+#repo --name=updates --mirrorlist=https://mirrors.fedoraproject.org/metalink?repo=updates-released-f$releasever&arch=$basearch
 
-repo --name=fedora-modular --mirrorlist=https://mirrors.fedoraproject.org/metalink?repo=fedora-modular-$releasever&arch=$basearch
-repo --name=updates-modular --mirrorlist=https://mirrors.fedoraproject.org/metalink?repo=updates-released-modular-f$releasever&arch=$basearch
+#repo --name=fedora-modular --mirrorlist=https://mirrors.fedoraproject.org/metalink?repo=fedora-modular-$releasever&arch=$basearch
+#repo --name=updates-modular --mirrorlist=https://mirrors.fedoraproject.org/metalink?repo=updates-released-modular-f$releasever&arch=$basearch
 
+repo --name=fedora-modular --mirrorlist=https://mirrors.fedoraproject.org/mirrorlist?repo=fedora-modular-$releasever&arch=$basearch
+
+#repo --name=fedora-modular --mirrorlist=https://mirrors.fedoraproject.org/mirrorlist?repo=fedora-modular-31&arch=$basearch
+
+#repo --name=fedora --mirrorlist=https://mirrors.fedoraproject.org/mirrorlist?repo=fedora-$releasever&arch=$basearch
+#repo --name=updates --mirrorlist=https://mirrors.fedoraproject.org/mirrorlist?repo=updates-released-f$releasever&arch=$basearch
+#repo --name=updates-testing --mirrorlist=https://mirrors.fedoraproject.org/mirrorlist?repo=updates-testing-f$releasever&arch=$basearch
+#url --mirrorlist=https://mirrors.fedoraproject.org/mirrorlist?repo=fedora-$releasever&arch=$basearch
 
 #https://mirrors.fedoraproject.org/metalink?repo=updates-released-modular-f31&arch=x86_64
 #https://mirrors.fedoraproject.org/metalink?repo=fedora-31&arch=x86_64
@@ -21,6 +29,7 @@ repo --name=updates-modular --mirrorlist=https://mirrors.fedoraproject.org/metal
 
 %packages
 fedora-repos-modular
+
 dwm
 
 git
@@ -44,7 +53,7 @@ spin-kickstarts
 tmux
 geany 
 neofetch
-scrot
+#scrot
 compton
 xterm
 rxvt-unicode

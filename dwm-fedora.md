@@ -133,6 +133,22 @@ cp /usr/share/spin-kickstarts/fedora-live-lxqt.ks /priv-data/data/fedora-dwm-cus
 
 * https://forums.fedoraforum.org/showthread.php?313683-Making-a-Live-Custom-Iso-Using-Livemedia-Creator 
 
+* Prepare repositories for building `sudo nano /usr/share/spin-kickstarts/fedora-repo.ks`  and comment rawhide and uncomment not-rawhide 
+
+```
+
+# Include the appropriate repo definitions
+
+# Exactly one of the following should be uncommented
+
+# For the master branch the following should be uncommented
+# %include fedora-repo-rawhide.ks
+
+# For non-master branches the following should be uncommented
+%include fedora-repo-not-rawhide.ks
+
+```
+
 * Building 
 
 ```
@@ -145,7 +161,7 @@ ISO_NAME="Fedora-31-DWM-XFCE-`date '+%Y-%m-%d'`"
 sudo livecd-creator --verbose \
 --config=fedora-live-xfce-dwm.ks \
 --fslabel=${ISO_NAME} \
---cache=./build-cache/ --tmpdir=./tmp/ 2>&1 | tee -a ${ISO_NAME}.log 
+--cache=./build-cache/ --tmpdir=/tmp/ 2>&1 | tee -a ${ISO_NAME}.log 
 
 sha256sum ${ISO_NAME}.iso |tee -a ${ISO_NAME}.iso.sha256sum.txt
 
@@ -153,7 +169,7 @@ ISO_NAME="Fedora-31-DWM-MATE-`date '+%Y-%m-%d'`"
 sudo livecd-creator --verbose \
 --config=fedora-live-mate-dwm.ks \
 --fslabel=${ISO_NAME} \
---cache=./build-cache/ --tmpdir=./tmp/ 2>&1 | tee -a ${ISO_NAME}.log 
+--cache=./build-cache/ --tmpdir=/tmp/ 2>&1 | tee -a ${ISO_NAME}.log 
 
 sha256sum ${ISO_NAME}.iso |tee -a ${ISO_NAME}.iso.sha256sum.txt
 
@@ -162,7 +178,7 @@ ISO_NAME="Fedora-31-DWM-KDE-`date '+%Y-%m-%d'`"
 sudo livecd-creator --verbose \
 --config=fedora-live-kde-dwm.ks \
 --fslabel=${ISO_NAME} \
---cache=./build-cache/ --tmpdir=./tmp/ 2>&1 | tee -a ${ISO_NAME}.log 
+--cache=./build-cache/ --tmpdir=/tmp/ 2>&1 | tee -a ${ISO_NAME}.log 
 
 sha256sum ${ISO_NAME}.iso |tee -a ${ISO_NAME}.iso.sha256sum.txt
 
@@ -171,7 +187,7 @@ ISO_NAME="Fedora-31-DWM-light-`date '+%Y-%m-%d'`"
 sudo livecd-creator --verbose \
 --config=fedora-live-dwm-ultra-light.ks \
 --fslabel=${ISO_NAME} \
---cache=./build-cache/ --tmpdir=./tmp/ 2>&1 | tee -a ${ISO_NAME}.log 
+--cache=./build-cache/ --tmpdir=/tmp/ 2>&1 | tee -a ${ISO_NAME}.log 
 
 sha256sum ${ISO_NAME}.iso |tee -a ${ISO_NAME}.iso.sha256sum.txt
 
@@ -180,7 +196,7 @@ ISO_NAME="Fedora-31-DWM-LXQT-`date '+%Y-%m-%d'`"
 sudo livecd-creator --verbose \
 --config=fedora-live-lxqt-dwm.ks \
 --fslabel=${ISO_NAME} \
---cache=./build-cache/ --tmpdir=./tmp/ 2>&1 | tee -a ${ISO_NAME}.log 
+--cache=./build-cache/ --tmpdir=/tmp/ 2>&1 | tee -a ${ISO_NAME}.log 
 
 sha256sum ${ISO_NAME}.iso |tee -a ${ISO_NAME}.iso.sha256sum.txt
 
