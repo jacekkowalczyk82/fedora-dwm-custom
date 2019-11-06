@@ -155,8 +155,9 @@ cp /usr/share/spin-kickstarts/fedora-live-lxqt.ks /priv-data/data/fedora-dwm-cus
 cd /priv-data/data/fedora-dwm-custom/fedora-dwm-spin
 
 # remove old image file system files 
-sudo rm -rf ./tmp/imgcreate-*
+sudo rm -rf /tmp/imgcreate-*
 
+sudo rm  -rf ./build-cache/*
 ISO_NAME="Fedora-31-DWM-XFCE-`date '+%Y-%m-%d'`" 
 sudo livecd-creator --verbose \
 --config=fedora-live-xfce-dwm.ks \
@@ -165,6 +166,8 @@ sudo livecd-creator --verbose \
 
 sha256sum ${ISO_NAME}.iso |tee -a ${ISO_NAME}.iso.sha256sum.txt
 
+
+sudo rm  -rf ./build-cache/*
 ISO_NAME="Fedora-31-DWM-MATE-`date '+%Y-%m-%d'`" 
 sudo livecd-creator --verbose \
 --config=fedora-live-mate-dwm.ks \
@@ -174,6 +177,7 @@ sudo livecd-creator --verbose \
 sha256sum ${ISO_NAME}.iso |tee -a ${ISO_NAME}.iso.sha256sum.txt
 
 
+sudo rm  -rf ./build-cache/*
 ISO_NAME="Fedora-31-DWM-KDE-`date '+%Y-%m-%d'`" 
 sudo livecd-creator --verbose \
 --config=fedora-live-kde-dwm.ks \
@@ -183,6 +187,7 @@ sudo livecd-creator --verbose \
 sha256sum ${ISO_NAME}.iso |tee -a ${ISO_NAME}.iso.sha256sum.txt
 
 
+sudo rm  -rf ./build-cache/*
 ISO_NAME="Fedora-31-DWM-light-`date '+%Y-%m-%d'`" 
 sudo livecd-creator --verbose \
 --config=fedora-live-dwm-ultra-light.ks \
@@ -192,6 +197,7 @@ sudo livecd-creator --verbose \
 sha256sum ${ISO_NAME}.iso |tee -a ${ISO_NAME}.iso.sha256sum.txt
 
 
+sudo rm  -rf ./build-cache/*
 ISO_NAME="Fedora-31-DWM-LXQT-`date '+%Y-%m-%d'`" 
 sudo livecd-creator --verbose \
 --config=fedora-live-lxqt-dwm.ks \
