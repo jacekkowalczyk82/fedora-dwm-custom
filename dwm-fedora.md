@@ -131,6 +131,8 @@ cp /usr/share/spin-kickstarts/fedora-live-lxqt.ks /priv-data/data/fedora-dwm-cus
 
 ```
 
+* https://forums.fedoraforum.org/showthread.php?313683-Making-a-Live-Custom-Iso-Using-Livemedia-Creator 
+
 * Building 
 
 ```
