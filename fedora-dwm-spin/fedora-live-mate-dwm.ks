@@ -46,7 +46,7 @@ spin-kickstarts
 tmux
 geany 
 neofetch
-scrot
+#scrot
 compton
 xterm
 rxvt-unicode
