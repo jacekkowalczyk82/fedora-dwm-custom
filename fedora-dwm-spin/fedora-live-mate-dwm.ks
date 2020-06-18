@@ -22,7 +22,7 @@ part / --size 8192
 
 fedora-repos-modular
 
-dwm
+#dwm
 #dwm-user
 
 git
