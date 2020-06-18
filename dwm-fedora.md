@@ -171,7 +171,7 @@ sha256sum ${ISO_NAME}.iso |tee -a ${ISO_NAME}.iso.sha256sum.txt
 
 
 sudo rm  -rf ./build-cache/*
-ISO_NAME="Fedora-31-DWM-MATE-`date '+%Y-%m-%d'`" 
+ISO_NAME="Fedora-32-DWM-MATE-`date '+%Y-%m-%d'`" 
 sudo livecd-creator --verbose \
 --config=fedora-live-mate-dwm.ks \
 --fslabel=${ISO_NAME} \
